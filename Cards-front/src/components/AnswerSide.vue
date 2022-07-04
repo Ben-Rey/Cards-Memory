@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import WelcomeItem from "./WelcomeItem.vue";
-import DocumentationIcon from "./icons/IconDocumentation.vue";
-import ToolingIcon from "./icons/IconTooling.vue";
-import EcosystemIcon from "./icons/IconEcosystem.vue";
-import CommunityIcon from "./icons/IconCommunity.vue";
-import SupportIcon from "./icons/IconSupport.vue";
-import { ref } from "@vue/runtime-dom";
+import { ref } from "vue";
+import { LockClosedIcon } from "@heroicons/vue/solid";
+import { LockOpenIcon } from "@heroicons/vue/solid";
 
 const isActive = ref(false);
 </script>
@@ -13,10 +9,20 @@ const isActive = ref(false);
 <template>
   <div class="relative w-full h-full">
     <div
-      class="w-full h-full bg-base-content text-base-100 flex justify-center items-center transition transition-slowest ease duration-500 absolute top-0 left-0 z-30"
-      :class="{ active: isActive, 'translate-y-full': isActive }"
-      @click="isActive = !isActive"
+      class="w-full h-full bg-base-content text-base-100 flex justify-center items-center transition transition-slowest ease duration-500 absolute top-0 left-0 z-10"
+      :class="{ 'translate-y-full': isActive }"
     >
+      <button
+        class="btn btn-circle absolute z-20 flex-col transition-none -top-6"
+        @click="isActive = !isActive"
+      >
+        <div class="h-1/2 flex justify-center items-center align-middle w-full">
+          <LockOpenIcon class="h-3 w-3" />
+        </div>
+        <div class="h-1/2 flex justify-center items-center align-middle w-full">
+          <LockClosedIcon class="h-3 w-3" />
+        </div>
+      </button>
       <h1 class="text-3xl font-bold text-center">Réponse</h1>
     </div>
     <div class="w-full h-full bg-white">
